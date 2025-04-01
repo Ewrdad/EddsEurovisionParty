@@ -12,8 +12,8 @@ export const UserSelector = ({ user, setUser }) => {
     { username: "Ewrdad", id: 3 },
   ]);
 
-  const SetUserId = (id) => {
-    setUser({ ...user, id: id });
+  const SetUserId = (id, name) => {
+    setUser({ ...user, id: id, name: name });
   };
 
   return (

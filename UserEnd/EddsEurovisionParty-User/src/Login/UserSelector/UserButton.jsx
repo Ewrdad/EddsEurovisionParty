@@ -5,7 +5,7 @@ export const UserButton = ({ user, setUserId }) => {
     <Button
       className="bg-amber-300 w-full mt-2 p-8 hover:bg-amber-500"
       key={user.id}
-      onClick={() => setUserId(user.id)}
+      onClick={() => setUserId(user.id, user.username)}
     >
       <Grid container>
         <Grid item size={12}>

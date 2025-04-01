@@ -8,15 +8,21 @@ function App() {
   const [user, setUser] = useState({ id: undefined, session: undefined });
 
   return (
-    <div className="bg-gray-600 w-screen h-screen">
-      <Router>
-        <Routes>
-          <Route path="*" element={<Login user={user} setUser={setUser} />} />
+    <>
+      <div className="fixed inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 z-[-1]"></div>
+      <div className=" w-screen h-dvh bg-fixed min-h-screen ">
+        <Router>
+          <Routes>
+            <Route path="*" element={<Login user={user} setUser={setUser} />} />
 
-          <Route path="/user/*" element={<UserSpace />} />
-        </Routes>
-      </Router>
-    </div>
+            <Route
+              path="/user/*"
+              element={<UserSpace user={user} setUser={setUser} />}
+            />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
 
