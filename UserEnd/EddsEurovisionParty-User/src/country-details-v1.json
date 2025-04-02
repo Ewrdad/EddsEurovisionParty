@@ -7,7 +7,19 @@
     "wins": 5,
     "hosted": 9,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/-hu6R3ZnOdY?si=r2LCPFVBJEmU2bhC"
+      },
+      {
+        "type": "Genuis",
+        "title": "Genius",
+        "url": "https://genius.com/Remember-monday-what-the-hell-just-happened-lyrics"
+      }
+    ]
   },
   {
     "name": "Albania",
@@ -17,7 +29,14 @@
     "wins": 0,
     "hosted": 0,
     "language": "Albanian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Albania.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Albania.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Sfvb761EEcM?si=DI--_cxkt-tu9hJw"
+      }
+    ]
   },
   {
     "name": "Armenia",
@@ -25,7 +44,14 @@
     "song": "Survivor",
     "appearances": 16,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/RfH5o3XtI2c?si=XBT8xX9lzzGlpfJu"
+      }
+    ]
   },
   {
     "name": "Australia",
@@ -33,7 +59,14 @@
     "song": "Milkshake Man",
     "appearances": 9,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/_08I6mjHSLA?si=X-9qf72LZHaozTQj"
+      }
+    ]
   },
   {
     "name": "Austria",
@@ -43,7 +76,14 @@
     "wins": 2,
     "hosted": 2,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/-ieSTNpxvio?si=bmsl1YoxbK_jI8bw"
+      }
+    ]
   },
   {
     "name": "Azerbaijan",
@@ -53,7 +93,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/upbiPJ9uA70?si=-dV60Kjbn25751Ji"
+      }
+    ]
   },
   {
     "name": "Belgium",
@@ -63,7 +110,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/ScupiVTosHU?si=7QO0WcJ_Xxo0vwh1"
+      }
+    ]
   },
   {
     "name": "Croatia",
@@ -71,7 +125,14 @@
     "song": "Poison Cake",
     "appearances": 29,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/ie_v6qGCc5w?si=lGQOzNLmiL3B9p9_"
+      }
+    ]
   },
   {
     "name": "Cyprus",
@@ -79,7 +140,14 @@
     "song": "Shh",
     "appearances": 40,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Cyprus.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Cyprus.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/rbfQqWyqgJw?si=CX7mD6St174Gn7Ho"
+      }
+    ]
   },
   {
     "name": "Czechia",
@@ -87,7 +155,14 @@
     "song": "Kiss Kiss Goodbye",
     "appearances": 12,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Hm8CIICKAJU?si=S_zhdBhotiTSgx0a"
+      }
+    ]
   },
   {
     "name": "Denmark",
@@ -97,7 +172,14 @@
     "wins": 3,
     "hosted": 3,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/gdCAgiSIOUc?si=NOWFKpU6dFDsKanH"
+      }
+    ]
   },
   {
     "name": "Estonia",
@@ -107,7 +189,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "English/Italian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/elIcSmQ5VUA?si=6tQpAdxMFBR8bHbX"
+      }
+    ]
   },
   {
     "name": "Finland",
@@ -117,7 +206,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "Finnish",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Kg3QoTpnqyw?si=VRnzZMNTL_TlviOt"
+      }
+    ]
   },
   {
     "name": "France",
@@ -127,7 +223,14 @@
     "wins": 5,
     "hosted": 3,
     "language": "French",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Pj2DTSLcNnI?si=FbctCys27sb2CvkF"
+      }
+    ]
   },
   {
     "name": "Georgia",
@@ -135,7 +238,14 @@
     "song": "Freedom",
     "appearances": 16,
     "language": "English/Georgian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/c3wu0dUNd4c?si=M2eJ0SC9VUtq3tnm"
+      }
+    ]
   },
   {
     "name": "Germany",
@@ -145,7 +255,14 @@
     "wins": 2,
     "hosted": 3,
     "language": "German",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/zJplC4-9Scs?si=PhKGmpbstuH1I3Vc"
+      }
+    ]
   },
   {
     "name": "Greece",
@@ -155,7 +272,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "Greek",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/aDiq8J9h6vQ?si=XSrH_0MP8reHm_4I"
+      }
+    ]
   },
   {
     "name": "Iceland",
@@ -163,7 +287,14 @@
     "song": "Róa",
     "appearances": 36,
     "language": "Icelandic",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/s9P83Nl6D1M?si=w21y9efZtqhZON8e"
+      }
+    ]
   },
   {
     "name": "Ireland",
@@ -173,7 +304,14 @@
     "wins": 7,
     "hosted": 7,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/cZnusVb7yjs?si=hYC_1fNOekp4-jjZ"
+      }
+    ]
   },
   {
     "name": "Israel",
@@ -183,7 +321,14 @@
     "wins": 4,
     "hosted": 3,
     "language": "English/French/Hebrew",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/1280px-Flag_of_Israel.svg.png"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/1280px-Flag_of_Israel.svg.png",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Q3BELu4z6-U?si=7-lV7xW6o-mXx-q2"
+      }
+    ]
   },
   {
     "name": "Italy",
@@ -193,7 +338,14 @@
     "wins": 3,
     "hosted": 3,
     "language": "Italian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/-Alz9MnqyZI?si=T-EenQIcCp-qDXcu"
+      }
+    ]
   },
   {
     "name": "Latvia",
@@ -203,7 +355,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "Latvian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Latvia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Latvia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/RKw0OCgPV3s?si=kXakwnSM69MoXjmd"
+      }
+    ]
   },
   {
     "name": "Lithuania",
@@ -211,7 +370,14 @@
     "song": "Tavo akys",
     "appearances": 24,
     "language": "Lithuanian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Lithuania.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Lithuania.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/R2f2aZ6Fy58?si=SUL_qKUJbit1yOaP"
+      }
+    ]
   },
   {
     "name": "Luxembourg",
@@ -221,7 +387,14 @@
     "wins": 5,
     "hosted": 4,
     "language": "French",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Flag_of_Luxembourg.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Flag_of_Luxembourg.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/LVHu_KwHiKY?si=Hovj9AOcwIRRwVHr"
+      }
+    ]
   },
   {
     "name": "Malta",
@@ -229,7 +402,14 @@
     "song": "Serving(Kant)",
     "appearances": 36,
     "language": "English/Maltese",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Malta.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Malta.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/sLVSwfRRvMA?si=5XLUlJLznAld5PZi"
+      }
+    ]
   },
   {
     "name": "Montenegro",
@@ -237,7 +417,14 @@
     "song": "Dobrodošli",
     "appearances": 12,
     "language": "Montenegrin",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/ydMkpaB0CWk?si=H0DIkBar2OJ833wU"
+      }
+    ]
   },
   {
     "name": "Netherlands",
@@ -247,7 +434,14 @@
     "wins": 5,
     "hosted": 5,
     "language": "English/French",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/hEHwr5k9pd0?si=LOvOpRsj34D2yFc3"
+      }
+    ]
   },
   {
     "name": "Norway",
@@ -257,7 +451,14 @@
     "wins": 3,
     "hosted": 3,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/pUjWzQ671MQ?si=Q5x8g-tXBlc3vUlF"
+      }
+    ]
   },
   {
     "name": "Poland",
@@ -265,7 +466,14 @@
     "song": "Gaja",
     "appearances": 26,
     "language": "Polish",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/YXHHDjiclxA?si=Xfo_AkOxQ7nF9I1a"
+      }
+    ]
   },
   {
     "name": "Portugal",
@@ -275,7 +483,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "Portuguese",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/-s1Cc2uEj3U?si=Uzvz8xZH6eDxRNgp"
+      }
+    ]
   },
   {
     "name": "San Marino",
@@ -283,7 +498,14 @@
     "song": "Tutta l'Italia",
     "appearances": 14,
     "language": "Italian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_San_Marino.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_San_Marino.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/Le3WpaLYRvE?si=8L7-Ac4u1YHxxFr-"
+      }
+    ]
   },
   {
     "name": "Serbia",
@@ -293,7 +515,19 @@
     "wins": 1,
     "hosted": 1,
     "language": "Serbian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_Serbia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_Serbia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/18BCbtvDcag?si=lkGTAFMfmjSBW56d"
+      },
+      {
+        "type": "Youtube",
+        "title": "Drama, contreversy and protests",
+        "url": "https://www.youtube.com/embed/eBjxbR_oO28?si=xcw6hpbqsmE-CKG6"
+      }
+    ]
   },
   {
     "name": "Slovenia",
@@ -303,7 +537,14 @@
     "wins": 1,
     "hosted": 1,
     "language": "English",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Flag_of_Slovenia.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Flag_of_Slovenia.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/qTS2L0VcaVI?si=O5efGdayz0RZfgjk"
+      }
+    ]
   },
   {
     "name": "Spain",
@@ -313,7 +554,14 @@
     "wins": 2,
     "hosted": 1,
     "language": "Spanish",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/BvVxhbCW9rw?si=CWI-JC_TOu3k0EYg"
+      }
+    ]
   },
   {
     "name": "Sweden",
@@ -323,7 +571,14 @@
     "wins": 7,
     "hosted": 7,
     "language": "Swedish",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/WK3HOMhAeQY?si=RG2Zey7AkIpWsqrz"
+      }
+    ]
   },
   {
     "name": "Switzerland",
@@ -333,7 +588,14 @@
     "wins": 3,
     "hosted": 3,
     "language": "French",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/dGX54zRExR8?si=EZF02TrPomP0Uwfw"
+      }
+    ]
   },
   {
     "name": "Ukraine",
@@ -343,6 +605,13 @@
     "wins": 3,
     "hosted": 2,
     "language": "English/Ukrainian",
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg",
+    "moreDetails": [
+      {
+        "type": "Youtube",
+        "title": "Music Video",
+        "url": "https://www.youtube.com/embed/OJ1x2aiL7ks?si=tHIgyWFN9X2ygXao"
+      }
+    ]
   }
 ]
