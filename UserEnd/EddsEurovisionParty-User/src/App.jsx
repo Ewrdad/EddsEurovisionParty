@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Login } from "./Login/Login";
 import { UserSpace } from "./UserSpace/UserSpace";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const [user, setUser] = useState({ id: undefined, session: undefined });
@@ -22,6 +23,7 @@ function App() {
           </Routes>
         </Router>
       </div>
+      <Toaster richColors />
     </>
   );
 }

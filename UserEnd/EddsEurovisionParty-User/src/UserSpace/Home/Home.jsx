@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Weather } from "./Weather";
+import { toast } from "sonner";
 
 export const Home = ({ user }) => {
   const navigator = useNavigate();
@@ -29,6 +30,9 @@ export const Home = ({ user }) => {
         </Button>
         <Button
           variant="outlined"
+          onClick={() => {
+            toast.error("thisbdnsnijdsaon");
+          }}
           className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 h-1/3"
         >
           <p className="m-2 ">Food</p>

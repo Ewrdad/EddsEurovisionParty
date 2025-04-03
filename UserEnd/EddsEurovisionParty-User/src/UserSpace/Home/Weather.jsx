@@ -4,6 +4,7 @@ import { useState } from "react";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 import CloudIcon from "@mui/icons-material/Cloud";
 import AirIcon from "@mui/icons-material/Air";
+import { toast } from "sonner";
 
 export const Weather = () => {
   const [weatherData, setWeatherData] = useState({});
@@ -38,10 +39,15 @@ export const Weather = () => {
   };
 
   useEffect(() => {
+    toast("Sorry");
     const fetchWeather = async () => {
-      const weatherData = await getWeather();
-      console.log(weatherData);
-      setWeatherData(weatherData);
+      const { value: weatherData, error } = await getWeather.safeAsync();
+
+      !error && setWeatherData(weatherData);
+      if (error) {
+        toast.error("Weather data not available");
+        console.error("Error fetching weather data:", error);
+      }
     };
     fetchWeather();
   }, []);
