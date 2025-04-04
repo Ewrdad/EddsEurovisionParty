@@ -2,18 +2,38 @@ import { Button } from "@/components/ui/button";
 import { Grid } from "@mui/material";
 import CountryList from "@/country-details-v1.json";
 import { CountryCard } from "./CountryCard";
-import { useState } from "react";
-
+import { useState, useEffect, useMemo } from "react";
+import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 export const Vote = () => {
   const navigator = useNavigate();
   const [totalVotes, setTotalVotes] = useState({});
 
-  const votesSum = Object.values(totalVotes).reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
+  const votesSum = useMemo(() => {
+    return Object.values(totalVotes).reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+  }, [totalVotes]);
+
+  const votesLimit = useMemo(() => {
+    if (votesSum === 20) return "equal";
+    if (votesSum > 20) return "over";
+    return "under";
+  }, [votesSum]);
+
+  useEffect(() => {
+    votesLimit == "over" &&
+      toast.warning(
+        `You are only allowed to vote up to 20 times. \n You are currently over by ${
+          votesSum % 20
+        }+ votes. `
+      );
+    votesLimit == "equal" &&
+      toast.warning(`You have reached your 20 vote limit. `);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [votesLimit]);
 
   return (
     <Grid container className="justify-center text-center">

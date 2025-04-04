@@ -23,7 +23,7 @@ function App() {
           </Routes>
         </Router>
       </div>
-      <Toaster richColors />
+      <Toaster richColors closeButton />
     </>
   );
 }

@@ -26,7 +26,7 @@ export const Home = ({ user }) => {
             navigator("/user/vote");
           }}
         >
-          <p className="m-2 ">Vote</p>
+          <p className="m-2 ">Participants</p>
         </Button>
         <Button
           variant="outlined"
@@ -56,6 +56,17 @@ export const Home = ({ user }) => {
           Dashboard
         </Button>
       </Grid>
+      <Grid size={11} className="h-full content-end align-bottom">
+        <a href="https://eurovision.page.link/app">
+          <Button
+            variant="outlined"
+            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+          >
+            Get the app(Voting/clips/news)
+          </Button>
+        </a>
+      </Grid>
     </Grid>
   );
 };
+//
