@@ -1,16 +1,21 @@
 {
   "name": "eddseuropartyserver",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./API/Index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon ./API/Index.js"
   },
   "author": "ewrdad",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
