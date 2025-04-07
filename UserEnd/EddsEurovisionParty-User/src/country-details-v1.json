@@ -18,6 +18,13 @@
         "type": "Genuis",
         "title": "Genius",
         "url": "https://genius.com/Remember-monday-what-the-hell-just-happened-lyrics"
+      },
+      {
+        "type": "TON",
+        "title": "TON",
+        "content": [
+          "They are called remember monday because they used to have music practice together on a monday when they where younger"
+        ]
       }
     ]
   },
