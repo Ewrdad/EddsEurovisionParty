@@ -5,6 +5,7 @@ import { Food } from "./Food/Food";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Notifications } from "./Notifications/Notifications";
 
 export const UserSpace = ({ user, setUser }) => {
   const navigator = useNavigate();
@@ -16,11 +17,14 @@ export const UserSpace = ({ user, setUser }) => {
   }, [user, navigator, setUser]);
 
   return (
-    <Routes>
-      <Route path="*" element={<Home user={user} />} />
-      <Route path="/vote" element={<Vote />} />
-      <Route path="/food" element={<Food />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
+    <>
+      <Notifications />
+      <Routes>
+        <Route path="*" element={<Home user={user} />} />
+        <Route path="/vote" element={<Vote />} />
+        <Route path="/food" element={<Food />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </>
   );
 };

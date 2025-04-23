@@ -13,11 +13,21 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { MoreDetails } from "./MoreDetails/MoreDetails";
+import { UpdateVotes } from "./UpdateVotes";
+import { toast } from "sonner";
 
-export const CountryCard = ({ country, setTotalVotes }) => {
-  const [votes, setVotes] = useState(0);
+export const CountryCard = ({ country, setTotalVotes, defaultVotes }) => {
+  const [votes, setVotes] = useState(defaultVotes);
   const timerId = useRef(null);
 
+  const updater = async () => {
+    try {
+      await UpdateVotes(country.name, votes);
+    } catch (error) {
+      console.error("Error updating votes: ", error);
+      toast.error("Error updating votes. Please try again.");
+    }
+  };
   /**
    * @function handleVoteChange
    * @description Handles vote changes and sets a timer for fetching.
@@ -30,9 +40,15 @@ export const CountryCard = ({ country, setTotalVotes }) => {
 
     // Set a new timer
     timerId.current = setTimeout(() => {
-      console.log("Fetch", votes); // Replace with your fetch logic
+      setTotalVotes((prevValue) => ({
+        ...prevValue,
+        [country.name]: votes,
+      }));
+
+      updater();
+
       timerId.current = null; // Reset the timer ID
-    }, 1000); // 5-second delay
+    }, 500); // 5-second delay
   }, [votes]);
 
   /**
@@ -49,7 +65,6 @@ export const CountryCard = ({ country, setTotalVotes }) => {
 
   useEffect(() => {
     handleVoteChange(votes);
-    setTotalVotes((prevValue) => ({ ...prevValue, [country.name]: votes }));
   }, [country.name, votes]);
 
   const shouldBeZero = (value) => {

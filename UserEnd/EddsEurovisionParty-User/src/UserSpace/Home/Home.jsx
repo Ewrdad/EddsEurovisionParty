@@ -3,13 +3,17 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Weather } from "./Weather";
-import { toast } from "sonner";
-
+import { NextEvent } from "./NextEvent";
 export const Home = ({ user }) => {
   const navigator = useNavigate();
 
   return (
-    <Grid container className="justify-center text-center">
+    <Grid
+      container
+      className="justify-center text-center touch-pan-y
+
+"
+    >
       <Grid size={11} className="pt-10">
         <Weather />
         <h1 className="text-7xl">Welcome</h1>
@@ -31,12 +35,13 @@ export const Home = ({ user }) => {
         <Button
           variant="outlined"
           onClick={() => {
-            toast.error("thisbdnsnijdsaon");
+            navigator("/user/food");
           }}
           className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 h-1/3"
         >
           <p className="m-2 ">Food</p>
         </Button>
+        <NextEvent />
       </Grid>
       <Grid size={11} className="h-full content-end align-bottom">
         <a href="https://youtu.be/1af8llc2OBI?si=IjtghkwJgcJtFiWI">
@@ -52,6 +57,9 @@ export const Home = ({ user }) => {
         <Button
           variant="outlined"
           className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+          onClick={() => {
+            navigator("/user/dashboard");
+          }}
         >
           Dashboard
         </Button>

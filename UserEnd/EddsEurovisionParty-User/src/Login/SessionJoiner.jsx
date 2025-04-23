@@ -7,6 +7,8 @@ import {
 import { Grid } from "@mui/material";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import axios from "axios";
+import { APIUrl } from "@/APIUrl";
 
 /**
  * MARK: SessionJoiner
@@ -16,6 +18,24 @@ import { useState } from "react";
  */
 export const SessionJoiner = ({ user, setUser }) => {
   const [value, setValue] = useState("");
+  const JoinSession = async () => {
+    console.log("Joining session: ", value);
+    const response = await axios.post(
+      `${APIUrl}/session/join`,
+      {
+        sessionId: value,
+      },
+      { withCredentials: true }
+    );
+    console.log("Response: ", response);
+    if (response.status === 200) {
+      await setUser({ ...user, session: value });
+    } else {
+      console.error("Error joining session: ", response);
+    }
+  };
+  const a = 3 * 2; //?
+
   return (
     <Grid
       container
@@ -50,7 +70,7 @@ export const SessionJoiner = ({ user, setUser }) => {
       <Grid item size={10} className="h-10">
         <Button
           variant="outlined"
-          onClick={() => setUser({ ...user, session: value || undefined })}
+          onClick={() => JoinSession()}
           className="w-full bg-amber-600 hover:bg-amber-800 text-black text-3xl p-6 "
         >
           <p className="m-2">Join</p>

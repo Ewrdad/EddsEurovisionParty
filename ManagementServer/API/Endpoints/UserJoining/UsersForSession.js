@@ -2,6 +2,7 @@ import { readUser } from "../../../Connections/ReadUser.js";
 
 export const UsersForSession = async (req, res) => {
   if (!req.session.sessionId) {
+    console.log(req.session);
     res.status(400).send({ message: "No session to request", users: null });
     return;
   }

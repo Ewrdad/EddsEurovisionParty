@@ -52,6 +52,7 @@ const existingUserJoin = async (req, res) => {
 export const UserJoin = async (req, res) => {
   const { newName, id } = req.body;
   const sessionId = req.session.sessionId;
+  console.log(req.session);
 
   if (!sessionId) {
     res.status(400).json({ message: "Session ID is required" });

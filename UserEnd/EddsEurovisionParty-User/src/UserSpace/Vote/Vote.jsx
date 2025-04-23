@@ -5,11 +5,34 @@ import { CountryCard } from "./CountryCard";
 import { useState, useEffect, useMemo } from "react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { APIUrl } from "@/APIUrl";
 
 export const Vote = () => {
   const navigator = useNavigate();
   const [totalVotes, setTotalVotes] = useState({});
+  const [defaultVotes, setDefaultVotes] = useState(null);
 
+  useEffect(() => {
+    const getVotes = async () => {
+      try {
+        const response = await axios.get(`${APIUrl}/user/votes`, {
+          withCredentials: true,
+        });
+        if (response.status === 200) {
+          const votes = JSON.parse(response.data.votes);
+          console.log("Votes: ", votes);
+          setTotalVotes(votes ?? {});
+          setDefaultVotes(votes ?? {});
+        } else {
+          console.error("Error fetching votes: ", response);
+        }
+      } catch (error) {
+        console.error("Error fetching votes: ", error);
+      }
+    };
+    getVotes();
+  }, []);
   const votesSum = useMemo(() => {
     return Object.values(totalVotes).reduce(
       (accumulator, currentValue) => accumulator + currentValue,
@@ -27,7 +50,7 @@ export const Vote = () => {
     votesLimit == "over" &&
       toast.warning(
         `You are only allowed to vote up to 20 times. \n You are currently over by ${
-          votesSum % 20
+          votesSum - 20
         }+ votes. `
       );
     votesLimit == "equal" &&
@@ -52,13 +75,15 @@ export const Vote = () => {
           <h3 className="text-xl">Total Votes: {votesSum}/20</h3>
         </div>
       </Grid>
-      {CountryList.map((country) => (
-        <CountryCard
-          key={country.name}
-          country={country}
-          setTotalVotes={setTotalVotes}
-        />
-      ))}
+      {defaultVotes &&
+        CountryList.map((country) => (
+          <CountryCard
+            key={country.name}
+            country={country}
+            setTotalVotes={setTotalVotes}
+            defaultVotes={defaultVotes[country.name] || 0}
+          />
+        ))}
     </Grid>
   );
 };
