@@ -106,25 +106,22 @@ export const Dashboard = () => {
           Eurovision Party 2025
         </h1>
       </Grid>
-      <Grid size={9} className="pt-10 border-white/70 h-full">
+      <Grid size={9} className="pt-10 border-white/70 h-full pl-5">
         <Grid container className="justify-center text-center">
           {top3.First && <Top3Card country={top3.First} fakePoints={12} />}
           {top3.Second && <Top3Card country={top3.Second} fakePoints={10} />}
           {top3.Third && <Top3Card country={top3.Third} fakePoints={8} />}
         </Grid>
       </Grid>
-      <Grid size={3} className="pt-10 border-white/70 h-full">
+      <Grid size={3} className="pt-10 border-white/70 h-full w-10">
         <Carousel
-          plugins={[
-            Autoplay({
-              delay: 40000,
-            }),
-          ]}
           opts={{
             align: "start",
             loop: true,
+            startIndex: 1,
           }}
           setApi={setApi}
+          className="w-70"
         >
           <CarouselContent>
             <CarouselItem>
@@ -140,10 +137,11 @@ export const Dashboard = () => {
             </CarouselItem>
           </CarouselContent>
         </Carousel>
-
-        {bottom3.First && <Generic country={bottom3.First} />}
-        {bottom3.Second && <Generic country={bottom3.Second} />}
-        {bottom3.Third && <Generic country={bottom3.Third} />}
+        <div className="w-70">
+          {bottom3.First && <Generic country={bottom3.First} />}
+          {bottom3.Second && <Generic country={bottom3.Second} />}
+          {bottom3.Third && <Generic country={bottom3.Third} />}
+        </div>
       </Grid>
     </Grid>
   );

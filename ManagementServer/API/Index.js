@@ -84,7 +84,7 @@ app.use((req, res, next) => {
 app.get("/sesh", (req, res) => {
   res.send({ ...req.session });
 });
-app.get("/sesh/clear", (req, res) => {
+app.get("/session/clear", (req, res) => {
   if (!req.session.sessionId) {
     return res.status(400).send({ message: "No session to clear" });
   }

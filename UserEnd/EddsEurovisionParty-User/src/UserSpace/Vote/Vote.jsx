@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { APIUrl } from "@/APIUrl";
 
-export const Vote = () => {
+export const Vote = ({ invalidateUser }) => {
   const navigator = useNavigate();
   const [totalVotes, setTotalVotes] = useState({});
   const [defaultVotes, setDefaultVotes] = useState(null);
@@ -24,6 +24,12 @@ export const Vote = () => {
           console.log("Votes: ", votes);
           setTotalVotes(votes ?? {});
           setDefaultVotes(votes ?? {});
+        } else if (response.status === 401) {
+          invalidateUser();
+        } else if (response.status === 403) {
+          toast.error("You are not allowed to vote.");
+        } else if (response.status === 500) {
+          toast.error("Internal server error. Please try again later.");
         } else {
           console.error("Error fetching votes: ", response);
         }
@@ -32,7 +38,7 @@ export const Vote = () => {
       }
     };
     getVotes();
-  }, []);
+  }, [invalidateUser]);
   const votesSum = useMemo(() => {
     return Object.values(totalVotes).reduce(
       (accumulator, currentValue) => accumulator + currentValue,

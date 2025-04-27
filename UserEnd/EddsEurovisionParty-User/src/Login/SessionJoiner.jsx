@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/input-otp";
 import { Grid } from "@mui/material";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { APIUrl } from "@/APIUrl";
 
@@ -35,6 +35,27 @@ export const SessionJoiner = ({ user, setUser }) => {
     }
   };
   const a = 3 * 2; //?
+
+  useEffect(() => {
+    const existingSession = async () => {
+      const response = await axios.get(`${APIUrl}/sesh`, {
+        withCredentials: true,
+      });
+      console.log("Response: ", response);
+      if (response.status !== 200) {
+        return;
+      }
+      if (response.data && response.data.userId && response.data.sessionId) {
+        console.log("Existing session found: ", response.data);
+        await setUser({
+          session: response.data.sessionId,
+          id: response.data.userId,
+          name: response.data.username,
+        });
+      }
+    };
+    existingSession();
+  }, [setUser, user]);
 
   return (
     <Grid

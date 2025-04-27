@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Weather } from "./Weather";
 import { NextEvent } from "./NextEvent";
-export const Home = ({ user }) => {
+import { Interact } from "./Interact/Interact";
+export const Home = ({ user, invalidateUser }) => {
   const navigator = useNavigate();
 
   return (
@@ -43,16 +44,7 @@ export const Home = ({ user }) => {
         </Button>
         <NextEvent />
       </Grid>
-      <Grid size={11} className="h-full content-end align-bottom">
-        <a href="https://youtu.be/1af8llc2OBI?si=IjtghkwJgcJtFiWI">
-          <Button
-            variant="outlined"
-            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
-          >
-            Recap last years drama
-          </Button>
-        </a>
-      </Grid>
+
       <Grid size={11} className="h-full content-end align-bottom">
         <Button
           variant="outlined"
@@ -70,9 +62,33 @@ export const Home = ({ user }) => {
             variant="outlined"
             className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
           >
-            Get the app(Voting/clips/news)
+            Get the official app(Voting/clips/news)
           </Button>
         </a>
+      </Grid>
+      <Grid size={11} className="h-full content-end align-bottom">
+        <a href="https://youtu.be/1af8llc2OBI?si=IjtghkwJgcJtFiWI">
+          <Button
+            variant="outlined"
+            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+          >
+            Recap last years drama
+          </Button>
+        </a>
+      </Grid>
+      <Grid size={11} className="pt-2">
+        <Interact />
+      </Grid>
+      <Grid size={11} className="h-full content-end align-bottom">
+        <Button
+          variant="outlined"
+          className="bg-amber-800 hover:bg-amber-900 text-black text-xl p-4 w-full mt-2"
+          onClick={() => {
+            invalidateUser();
+          }}
+        >
+          Logout
+        </Button>
       </Grid>
     </Grid>
   );

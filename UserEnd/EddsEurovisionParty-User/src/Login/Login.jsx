@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { SessionJoiner } from "./SessionJoiner";
 import { UserSelector } from "./UserSelector/UserSelector";
-
 /**
  * MARK: User
  * @param {*} user
