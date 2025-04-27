@@ -7,10 +7,10 @@ import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const [user, setUser] = useState({ id: undefined, session: undefined });
-
+  // bg-gradient-to-r from-pink-to-blue-start to-pink-to-blue-end bg-[200%_100%] animate-gradient-move
   return (
     <>
-      <div className="fixed inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 z-[-1]"></div>
+      <div className="fixed inset-0 bg-gradient-to-r from-purple-500 via-indigo-600 to-purple-500 bg-[200%_100%] animated-background min-h-screen  w-screen z-[-1]"></div>
       <div className=" w-screen h-dvh bg-fixed min-h-screen ">
         <Router>
           <Routes>

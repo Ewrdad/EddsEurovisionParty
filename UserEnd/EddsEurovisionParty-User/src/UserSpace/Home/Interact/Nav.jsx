@@ -7,7 +7,7 @@ export const Nav = ({ page }) => {
   const { scrollPrev, scrollNext } = useCarousel();
 
   return (
-    <div className="text-2xl">
+    <div className="text-2xl align-middle flex justify-center items-center gap-4 mt-5">
       <Button
         onClick={() => {
           scrollPrev();
