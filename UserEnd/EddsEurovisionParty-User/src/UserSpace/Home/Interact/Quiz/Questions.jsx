@@ -22,6 +22,19 @@ const questions = [
     question: "Whats the highest place cyprus has ever achieved?",
     answer: "2nd place",
   },
+  {
+    question: "What are the two countries with the most wins?",
+    answer: "Ireland and Sweden , with 7 wins each",
+  },
+  {
+    question: "When did Australia first enter the contest?",
+    answer: "2015",
+  },
+  {
+    question: "Why was Georgia disqualified in 2009 contest held in Moscow?",
+    answer:
+      "As the song was called 'We Don't wanna put in'. Showing how Russia has always been dicks",
+  },
 ];
 
 export const getRandomQuestion = () => {

@@ -1,6 +1,7 @@
 import { Genuis } from "./Genuis";
 import { YoutubeVideo } from "./YoutubeVideo";
 import { TON } from "./TON";
+import { Profile } from "./Profile";
 
 export const MoreDetails = ({ detail }) => {
   return (
@@ -8,6 +9,7 @@ export const MoreDetails = ({ detail }) => {
       {detail.type == "Youtube" && <YoutubeVideo detail={detail} />}
       {detail.type == "Genuis" && <Genuis detail={detail} />}
       {detail.type == "TON" && <TON detail={detail} />}
+      {detail.type == "Profile" && <Profile detail={detail} />}
     </div>
   );
 };
