@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import { Spotify } from "./Spotify";
 import { Quiz } from "./Quiz/Quiz";
+import { Shorts } from "./Shorts";
 
 export const Interact = () => {
   return (
@@ -25,6 +26,9 @@ export const Interact = () => {
           </CarouselItem>
           <CarouselItem>
             <Quiz />
+          </CarouselItem>
+          <CarouselItem>
+            <Shorts />
           </CarouselItem>
         </CarouselContent>
       </Carousel>

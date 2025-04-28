@@ -17,8 +17,8 @@ export const Home = ({ user, invalidateUser }) => {
     >
       <Grid size={11} className="pt-10">
         <Weather />
-        <h1 className="text-7xl">Welcome</h1>
-        <h3 className="text-4xl">{user.name || "you"}</h3>
+        <h1 className="text-7xl text-shadow-lg">Welcome</h1>
+        <h3 className="text-4xl text-shadow-md">{user.name || "you"}</h3>
       </Grid>
       <Grid size={11}>
         <Separator orientation="horizontal" className="bg-black mt-5" />
@@ -26,7 +26,7 @@ export const Home = ({ user, invalidateUser }) => {
       <Grid size={11} className="h-[60vh]">
         <Button
           variant="outlined"
-          className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 h-1/3"
+          className="bg-amber-600 hover:bg-amber-800 text-black p-4 w-full mt-2 h-1/3 rounded-4xl text-shadow-lg text-4xl shadow-2xl  focus:ring-8"
           onClick={() => {
             navigator("/user/vote");
           }}
@@ -38,7 +38,7 @@ export const Home = ({ user, invalidateUser }) => {
           onClick={() => {
             navigator("/user/food");
           }}
-          className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 h-1/3"
+          className="bg-amber-600 hover:bg-amber-800 text-black text-4xl p-4 w-full mt-2 h-1/3 rounded-4xl text-shadow-lg shadow-2xl  focus:ring-8"
         >
           <p className="m-2 ">Food</p>
         </Button>
@@ -48,7 +48,7 @@ export const Home = ({ user, invalidateUser }) => {
       <Grid size={11} className="h-full content-end align-bottom">
         <Button
           variant="outlined"
-          className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+          className="bg-amber-600 hover:bg-amber-800 text-black p-4 w-full mt-2 rounded-4xl text-shadow-lg text-xl shadow-2xl  focus:ring-8"
           onClick={() => {
             navigator("/user/dashboard");
           }}
@@ -60,7 +60,7 @@ export const Home = ({ user, invalidateUser }) => {
         <a href="https://eurovision.page.link/app">
           <Button
             variant="outlined"
-            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 rounded-4xl text-shadow-lg shadow-2xl  focus:ring-8"
           >
             Get the official app(Voting/clips/news)
           </Button>
@@ -70,7 +70,7 @@ export const Home = ({ user, invalidateUser }) => {
         <a href="https://youtu.be/1af8llc2OBI?si=IjtghkwJgcJtFiWI">
           <Button
             variant="outlined"
-            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2"
+            className="bg-amber-600 hover:bg-amber-800 text-black text-xl p-4 w-full mt-2 rounded-4xl text-shadow-lg shadow-2xl focus:ring-8 "
           >
             Recap last years drama
           </Button>
@@ -79,10 +79,10 @@ export const Home = ({ user, invalidateUser }) => {
       <Grid size={11} className="pt-2">
         <Interact />
       </Grid>
-      <Grid size={11} className="h-full content-end align-bottom">
+      <Grid size={11} className="">
         <Button
           variant="outlined"
-          className="bg-amber-800 hover:bg-amber-900 text-black text-xl p-4 w-full mt-2"
+          className="bg-amber-800 hover:bg-amber-900 text-black text-xl p-4 w-full mt-2 rounded-4xl text-shadow-lg shadow-2xl focus:ring-8"
           onClick={() => {
             invalidateUser();
           }}

@@ -39,7 +39,6 @@ export const Weather = () => {
   };
 
   useEffect(() => {
-    toast("Sorry");
     const fetchWeather = async () => {
       const { value: weatherData, error } = await getWeather.safeAsync();
 

@@ -16,7 +16,7 @@ export const Nav = ({ page }) => {
       >
         <ArrowBackIcon />
       </Button>
-      {page}/2
+      {page}/3
       <Button
         onClick={() => {
           scrollNext();
