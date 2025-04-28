@@ -35,6 +35,11 @@ const questions = [
     answer:
       "As the song was called 'We Don't wanna put in'. Showing how Russia has always been dicks",
   },
+    {
+    question: "What saying was a common show of support for Ukraine in the past few years?",
+    answer:
+      "Slava Ukraini",
+  }, 
 ];
 
 export const getRandomQuestion = () => {
