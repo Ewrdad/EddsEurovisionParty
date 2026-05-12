@@ -137,6 +137,7 @@ if (process.env.NODE_ENV !== "test") {
   server.listen(config.port, () => {
     console.log(`[Server] SyncServer listening on port ${config.port}`);
     console.log(`[Docs] API documentation available at http://localhost:${config.port}/docs`);
+    console.log(`[Auth] Admin token: ${config.adminToken}`);
     
     if (config.isTestMode) {
       console.log("[Test Mode] Enabled: starting simulated live stream...");
