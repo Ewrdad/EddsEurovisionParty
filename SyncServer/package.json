@@ -6,6 +6,7 @@
   "scripts": {
     "test": "bun test",
     "start": "bun src/index.ts",
+    "start:debug": "DEBUG=true bun src/index.ts",
     "dev": "bun --watch src/index.ts",
     "sim": "bun scripts/detection_sim.ts"
   },
