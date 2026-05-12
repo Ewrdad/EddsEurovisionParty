@@ -1,0 +1,6 @@
+requests
+pillow
+ollama
+mss
+pytest
+pytest-mock
