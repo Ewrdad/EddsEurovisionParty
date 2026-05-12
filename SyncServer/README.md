@@ -32,7 +32,8 @@ Used by the Detection Server to update the live state.
   ```json
   {
     "actId": "sweden-2026",
-    "showId": "grand-final"
+    "showId": "grand-final",
+    "isLive": true
   }
   ```
 

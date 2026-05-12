@@ -102,13 +102,16 @@ app.post("/admin/state", (req, res) => {
     return res.status(400).json({ error: "Invalid request", details: result.error.format() });
   }
 
-  const { actId, showId, message } = result.data;
+  const { actId, showId, isLive, message } = result.data;
   
   if (actId !== undefined) {
     wsHandler.setAct(actId);
   }
   if (showId !== undefined) {
     wsHandler.setShow(showId);
+  }
+  if (isLive !== undefined) {
+    wsHandler.setLive(isLive);
   }
   if (message !== undefined) {
     wsHandler.broadcastMessage(message);

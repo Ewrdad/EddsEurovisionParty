@@ -11,9 +11,10 @@ export const MessageSchema = z.object({
 export const StateUpdateSchema = z.object({
   actId: z.string().optional().nullable(),
   showId: z.string().optional(),
+  isLive: z.boolean().optional(),
   message: MessageSchema.optional(),
-}).refine(data => data.actId !== undefined || data.showId !== undefined || data.message !== undefined, {
-  message: "At least one of 'actId', 'showId', or 'message' must be provided"
+}).refine(data => data.actId !== undefined || data.showId !== undefined || data.isLive !== undefined || data.message !== undefined, {
+  message: "At least one of 'actId', 'showId', 'isLive', or 'message' must be provided"
 });
 
 export type StateUpdate = z.infer<typeof StateUpdateSchema>;

@@ -4,6 +4,7 @@ import http from "http";
 export interface ServerState {
   actId: string | null;
   showId: string;
+  isLive: boolean;
 }
 
 interface ExtendedWebSocket extends WebSocket {
@@ -15,7 +16,8 @@ export function setupWebSocket(server: http.Server) {
   
   let currentState: ServerState = {
     actId: "NONE",
-    showId: "grand-final"
+    showId: "grand-final",
+    isLive: false
   };
 
   const clients = new Set<ExtendedWebSocket>();
@@ -23,11 +25,13 @@ export function setupWebSocket(server: http.Server) {
   function broadcastState(ws?: ExtendedWebSocket) {
     const actMessage = JSON.stringify({ type: "ACT_CHANGE", actId: currentState.actId });
     const showMessage = JSON.stringify({ type: "SHOW_CHANGE", showId: currentState.showId });
+    const liveMessage = JSON.stringify({ type: "LIVE_STATUS", isLive: currentState.isLive });
     
     if (ws) {
       if (ws.readyState === WebSocket.OPEN) {
         ws.send(actMessage);
         ws.send(showMessage);
+        ws.send(liveMessage);
       }
       return;
     }
@@ -36,6 +40,7 @@ export function setupWebSocket(server: http.Server) {
       if (client.readyState === WebSocket.OPEN) {
         client.send(actMessage);
         client.send(showMessage);
+        client.send(liveMessage);
       }
     });
   }
@@ -92,6 +97,13 @@ export function setupWebSocket(server: http.Server) {
       if (currentState.showId !== showId) {
         console.log(`[State] Show Change: ${currentState.showId} -> ${showId}`);
         currentState.showId = showId;
+        broadcastState();
+      }
+    },
+    setLive: (isLive: boolean) => {
+      if (currentState.isLive !== isLive) {
+        console.log(`[State] Live Status Change: ${currentState.isLive} -> ${isLive}`);
+        currentState.isLive = isLive;
         broadcastState();
       }
     },

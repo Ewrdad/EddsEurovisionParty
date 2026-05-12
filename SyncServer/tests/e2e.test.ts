@@ -39,19 +39,50 @@ describe("SyncServer E2E", () => {
         const msg = JSON.parse(data.toString());
         receivedMessages.push(msg);
         
-        if (receivedMessages.length === 2) {
+        if (receivedMessages.length === 3) {
           const actMsg = receivedMessages.find(m => m.type === "ACT_CHANGE");
           const showMsg = receivedMessages.find(m => m.type === "SHOW_CHANGE");
+          const liveMsg = receivedMessages.find(m => m.type === "LIVE_STATUS");
           
           expect(actMsg).toBeDefined();
           expect(actMsg.actId).toBe("NONE");
           
           expect(showMsg).toBeDefined();
           expect(showMsg.showId).toBe("grand-final");
+
+          expect(liveMsg).toBeDefined();
+          expect(liveMsg.isLive).toBe(false);
           
           resolve();
         }
       });
+    });
+  });
+
+  it("should broadcast live status changes when admin updates state", () => {
+    return new Promise<void>(async (resolve) => {
+      // Setup a listener for the change
+      wsClient.on("message", (data) => {
+        const msg = JSON.parse(data.toString());
+        if (msg.type === "LIVE_STATUS" && msg.isLive === true) {
+          resolve();
+        }
+      });
+
+      // Send authorized admin request
+      const res = await fetch(`http://localhost:${port}/admin/state`, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": "Bearer development_fallback_token" 
+        },
+        body: JSON.stringify({ isLive: true })
+      });
+      
+      expect(res.status).toBe(200);
+      const resData = await res.json();
+      expect(resData.success).toBe(true);
+      expect(resData.state.isLive).toBe(true);
     });
   });
 
