@@ -14,6 +14,14 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.json());
 
+// Debug logging middleware
+if (config.debug) {
+  app.use((req, res, next) => {
+    console.log(`[Debug] ${req.method} ${req.url} from ${req.ip}`);
+    next();
+  });
+}
+
 // Swagger configuration
 const swaggerOptions = {
   definition: {
@@ -46,6 +54,13 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Set up WebSocket server attached to the HTTP server
 const wsHandler = setupWebSocket(server);
+
+// Log WebSocket upgrade attempts in debug mode
+if (config.debug) {
+  server.on("upgrade", (req, socket, head) => {
+    console.log(`[Debug] WS Upgrade request from ${req.socket.remoteAddress} for ${req.url}`);
+  });
+}
 
 /**
  * @openapi

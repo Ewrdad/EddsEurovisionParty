@@ -1,5 +1,6 @@
 import { WebSocketServer, WebSocket } from "ws";
 import http from "http";
+import { config } from "./config";
 
 export interface ServerState {
   actId: string | null;
@@ -13,6 +14,10 @@ interface ExtendedWebSocket extends WebSocket {
 
 export function setupWebSocket(server: http.Server) {
   const wss = new WebSocketServer({ server });
+
+  if (config.debug) {
+    console.log("[Debug] WebSocket server initialized and attached to HTTP server");
+  }
   
   let currentState: ServerState = {
     actId: "NONE",
@@ -47,6 +52,9 @@ export function setupWebSocket(server: http.Server) {
 
   // Heartbeat interval to check for stale connections
   const interval = setInterval(() => {
+    if (config.debug && clients.size > 0) {
+      console.log(`[Debug] WS Heartbeat: checking ${clients.size} clients`);
+    }
     clients.forEach((ws) => {
       if (ws.isAlive === false) {
         console.log("[WS] Terminating stale connection");
@@ -61,22 +69,33 @@ export function setupWebSocket(server: http.Server) {
     ws.isAlive = true;
     clients.add(ws);
     
-    console.log(`[WS] New client connected from ${req.socket.remoteAddress}. Total: ${clients.size}`);
+    const clientIp = req.socket.remoteAddress;
+    console.log(`[WS] New client connected from ${clientIp}. Total: ${clients.size}`);
     
+    if (config.debug) {
+      console.log(`[Debug] WS Connection headers from ${clientIp}:`, JSON.stringify(req.headers));
+    }
+
     // Send current state immediately upon connection
     broadcastState(ws);
 
     ws.on("pong", () => {
       ws.isAlive = true;
+      if (config.debug) {
+        console.log(`[Debug] WS Pong received from ${clientIp}`);
+      }
     });
 
-    ws.on("close", () => {
+    ws.on("close", (code, reason) => {
       clients.delete(ws);
-      console.log(`[WS] Client disconnected. Total: ${clients.size}`);
+      console.log(`[WS] Client disconnected from ${clientIp}. Code: ${code}. Total: ${clients.size}`);
+      if (config.debug && reason && reason.length > 0) {
+        console.log(`[Debug] WS Disconnect reason: ${reason}`);
+      }
     });
 
     ws.on("error", (error) => {
-      console.error("[WS] Socket error:", error);
+      console.error(`[WS] Socket error from ${clientIp}:`, error);
       clients.delete(ws);
     });
   });
