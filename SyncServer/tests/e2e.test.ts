@@ -1,6 +1,6 @@
 import { app, server, wsHandler } from "../src/index";
 import { WebSocket } from "ws";
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, afterAll } from "bun:test";
 
 describe("SyncServer E2E", () => {
   let port: number;
@@ -24,9 +24,7 @@ describe("SyncServer E2E", () => {
       wsClient.close();
     }
     wsHandler.close();
-    await new Promise<void>((resolve) => {
-      server.close(() => resolve());
-    });
+    server.close();
   });
 
   it("should send initial state on connect", () => {
