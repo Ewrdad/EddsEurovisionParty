@@ -18,31 +18,71 @@ The Sync Server acts as the central hub for the Eurovision Party experience. It 
 
 ## 📖 API Documentation
 
-The server provides interactive API documentation via Swagger.
+The server provides interactive API documentation via Swagger at `http://localhost:8080/docs`.
 
-- **URL**: `http://localhost:8080/docs` (default port)
+---
 
-### Admin HTTP API
+## 🔐 Admin Connection Guide
 
-Used by the Detection Server to update the live state.
+The **Detection Server** (or any admin tool) communicates with the Sync Server via a secure HTTP POST endpoint.
 
-- **Endpoint**: `POST /admin/state`
-- **Auth**: `Authorization: Bearer <ADMIN_TOKEN>`
-- **Payload**:
-  ```json
-  {
-    "actId": "sweden-2026",
-    "showId": "grand-final",
-    "isLive": true
-  }
-  ```
+### 1. Authentication
+All requests to the admin endpoint must include a Bearer Token in the headers. 
+- **Header**: `Authorization: Bearer <ADMIN_TOKEN>`
+- **Token**: Defined in your `.env` file. If not set, it defaults to `development_fallback_token`.
+- **Tip**: Run `bun run start:debug` to see the active token logged on boot.
 
-### WebSocket API (Clients)
+### 2. Updating Live State
+**Endpoint**: `POST /admin/state`
 
-- **Endpoint**: `ws://<server-url>`
-- **Messages**:
-  - `ACT_CHANGE`: `{ "type": "ACT_CHANGE", "actId": "sweden-2026" }`
-  - `SHOW_CHANGE`: `{ "type": "SHOW_CHANGE", "showId": "grand-final" }`
+#### Payload Options:
+You can update one or all of these fields in a single request.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `actId` | `string` | The ID of the currently performing country (e.g., `"sweden-2026"`). |
+| `showId` | `string` | The ID of the current show (e.g., `"grand-final"`). |
+| `isLive` | `boolean` | Whether the show is currently "active" or in a break. |
+
+**Example Request (cURL):**
+```bash
+curl -X POST http://localhost:8080/admin/state \
+  -H "Authorization: Bearer development_fallback_token" \
+  -H "Content-Type: application/json" \
+  -d '{"actId": "uk-2026", "isLive": true}'
+```
+
+### 3. Sending Global Messages (Toasts)
+You can push a notification to all connected clients by including a `message` object.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `text` | `string` | The message to display. |
+| `type` | `string` | `info`, `success`, `warning`, or `error`. (Default: `info`) |
+| `duration`| `number` | How long to show the message in ms. (Default: `5000`) |
+
+**Example Request:**
+```bash
+curl -X POST http://localhost:8080/admin/state \
+  -H "Authorization: Bearer development_fallback_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": {
+      "text": "Voting is now OPEN!",
+      "type": "success",
+      "duration": 10000
+    }
+  }'
+```
+
+### 4. Troubleshooting
+If you are having trouble connecting:
+1. **Enable Debug Mode**: Run `bun run start:debug`.
+2. **Check Logs**: The server will log every HTTP request and WebSocket upgrade attempt.
+3. **Verify Token**: Ensure your `Authorization` header exactly matches the token logged on boot.
+4. **IP Address**: If running in Docker or on a separate machine, ensure you are hitting the correct IP/port and that CORS is not an issue.
+
+---
 
 ## 🚦 Getting Started
 
