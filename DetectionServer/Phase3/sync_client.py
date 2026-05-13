@@ -22,26 +22,31 @@ class SyncClient:
         if self.log_cb:
             self.log_cb(msg)
 
-    def update_state(self, act_id=None, show_id=None, is_live=None, message=None):
+    def update_state(self, **kwargs):
         """
         Updates the sync server state.
-        act_id: ID of the current act (string)
-        show_id: ID of the current show (string)
-        is_live: Boolean status
-        message: Dict with {text, type, duration, imageUrl}
+        Supports: actId, showId, isLive, message
         """
         payload = {}
-        if act_id is not None:
-            payload["actId"] = act_id
-        if show_id is not None:
-            payload["showId"] = show_id
-        if is_live is not None:
-            payload["isLive"] = is_live
-        if message is not None:
-            payload["message"] = message
+        # Mapping Python-style names to API-style names
+        mapping = {
+            "act_id": "actId",
+            "show_id": "showId",
+            "is_live": "isLive",
+            "message": "message"
+        }
+        
+        for py_key, api_key in mapping.items():
+            if py_key in kwargs:
+                payload[api_key] = kwargs[py_key]
+        
+        # Direct support for API keys too
+        for api_key in mapping.values():
+            if api_key in kwargs:
+                payload[api_key] = kwargs[api_key]
 
         if not payload:
-            return False, "Empty payload"
+            return False, "Empty payload: No state fields provided"
 
         self._log(f"POST {self.base_url}/admin/state (SSL Verify: {self.verify_ssl})")
         try:
@@ -58,7 +63,11 @@ class SyncClient:
             elif response.status_code == 401:
                 return False, "Unauthorized: Invalid Admin Token"
             else:
-                return False, f"Server Error {response.status_code}: {response.text}"
+                try:
+                    err_data = response.json()
+                    return False, f"Server Error {response.status_code}: {err_data.get('error', response.text)}"
+                except:
+                    return False, f"Server Error {response.status_code}: {response.text}"
         except requests.exceptions.SSLError as e:
             self._log(f"ERROR: SSL Certificate Verification Failed: {str(e)}")
             return False, f"SSL Certificate Verification Failed: {str(e)}"
@@ -92,6 +101,7 @@ class SyncClient:
         return self.update_state(message=msg)
 
     def set_act(self, act_id):
+        # We use a dict to allow passing None (null) explicitly
         return self.update_state(act_id=act_id)
 
     def set_show(self, show_id):
@@ -99,16 +109,3 @@ class SyncClient:
 
     def set_live(self, is_live):
         return self.update_state(is_live=is_live)
-
-    def check_health(self):
-        try:
-            response = requests.get(f"{self.base_url}/health", timeout=5)
-            if response.status_code == 200:
-                return True, "OK"
-            return False, f"HTTP {response.status_code}"
-        except requests.exceptions.ConnectionError:
-            return False, "Connection Refused"
-        except requests.exceptions.Timeout:
-            return False, "Timeout"
-        except Exception as e:
-            return False, str(e)

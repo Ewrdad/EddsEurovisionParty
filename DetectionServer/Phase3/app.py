@@ -279,7 +279,7 @@ class Phase3App:
         if success:
             self.lbl_diag_status.config(text=f"Success: {reason}", foreground="green")
             # Try a dummy state update to check token
-            s2, r2 = self.sync_client.update_state(is_live=None) # Just a ping
+            s2, r2 = self.sync_client.update_state(is_live=self.var_is_live.get()) # Just a ping
             if s2:
                 self.lbl_diag_status.config(text=f"Success: Connection & Auth OK", foreground="green")
             else:
