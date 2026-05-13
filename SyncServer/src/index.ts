@@ -119,15 +119,9 @@ app.post("/admin/state", (req, res) => {
 
   const { actId, showId, isLive, message } = result.data;
   
-  if (actId !== undefined) {
-    wsHandler.setAct(actId);
-  }
-  if (showId !== undefined) {
-    wsHandler.setShow(showId);
-  }
-  if (isLive !== undefined) {
-    wsHandler.setLive(isLive);
-  }
+  // Use coalesced update for state fields
+  wsHandler.updateState({ actId, showId, isLive });
+
   if (message !== undefined) {
     wsHandler.broadcastMessage(message);
   }

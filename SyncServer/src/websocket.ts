@@ -28,26 +28,32 @@ export function setupWebSocket(server: http.Server) {
   const clients = new Set<ExtendedWebSocket>();
 
   function broadcastState(ws?: ExtendedWebSocket) {
-    const actMessage = JSON.stringify({ type: "ACT_CHANGE", actId: currentState.actId });
+    const actId = currentState.actId || "NONE";
+    const actMessage = JSON.stringify({ type: "ACT_CHANGE", actId });
     const showMessage = JSON.stringify({ type: "SHOW_CHANGE", showId: currentState.showId });
     const liveMessage = JSON.stringify({ type: "LIVE_STATUS", isLive: currentState.isLive });
     
-    if (ws) {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send(actMessage);
-        ws.send(showMessage);
-        ws.send(liveMessage);
-      }
-      return;
-    }
-
-    clients.forEach((client) => {
+    // Also send a combined state message for more efficient UI updates
+    const stateUpdateMessage = JSON.stringify({ 
+      type: "STATE_UPDATE", 
+      state: { ...currentState, actId } 
+    });
+    
+    const sendAll = (client: ExtendedWebSocket) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(actMessage);
         client.send(showMessage);
         client.send(liveMessage);
+        client.send(stateUpdateMessage);
       }
-    });
+    };
+
+    if (ws) {
+      sendAll(ws);
+      return;
+    }
+
+    clients.forEach(sendAll);
   }
 
   // Heartbeat interval to check for stale connections
@@ -105,6 +111,28 @@ export function setupWebSocket(server: http.Server) {
   });
 
   return {
+    updateState: (updates: Partial<ServerState>) => {
+      let changed = false;
+      if (updates.actId !== undefined && currentState.actId !== updates.actId) {
+        console.log(`[State] Act Change: ${currentState.actId} -> ${updates.actId}`);
+        currentState.actId = updates.actId;
+        changed = true;
+      }
+      if (updates.showId !== undefined && currentState.showId !== updates.showId) {
+        console.log(`[State] Show Change: ${currentState.showId} -> ${updates.showId}`);
+        currentState.showId = updates.showId;
+        changed = true;
+      }
+      if (updates.isLive !== undefined && currentState.isLive !== updates.isLive) {
+        console.log(`[State] Live Status Change: ${currentState.isLive} -> ${updates.isLive}`);
+        currentState.isLive = updates.isLive;
+        changed = true;
+      }
+      
+      if (changed) {
+        broadcastState();
+      }
+    },
     setAct: (actId: string | null) => {
       if (currentState.actId !== actId) {
         console.log(`[State] Act Change: ${currentState.actId} -> ${actId}`);

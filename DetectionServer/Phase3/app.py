@@ -173,6 +173,10 @@ class Phase3App:
         override_frame = ttk.LabelFrame(self.tab_management, text="Manual Act Correction", padding=10)
         override_frame.pack(fill=tk.X, padx=10, pady=5)
 
+        self.var_manual_mode = tk.BooleanVar(value=False)
+        self.chk_manual = ttk.Checkbutton(override_frame, text="Manual Mode (Disable Auto-Sync)", variable=self.var_manual_mode, command=self._toggle_manual_mode)
+        self.chk_manual.pack(side=tk.TOP, anchor=tk.W, pady=5)
+
         self.act_override_combo = ttk.Combobox(override_frame, values=["NONE"] + self.config["countries"], state="readonly")
         self.act_override_combo.pack(side=tk.LEFT, padx=5)
         self.act_override_combo.set("NONE")
@@ -383,6 +387,10 @@ class Phase3App:
         else:
             messagebox.showerror("Error", f"Failed: {resp}")
 
+    def _toggle_manual_mode(self):
+        self.engine.manual_mode = self.var_manual_mode.get()
+        self._log_status(f"Manual mode: {self.engine.manual_mode}")
+
     def _override_act(self):
         act = self.act_override_combo.get()
         success, resp = self.sync_client.set_act(None if act == "NONE" else act)
@@ -390,6 +398,7 @@ class Phase3App:
             messagebox.showinfo("Success", f"Act manually set to {act}")
             # Also update engine's last broadcast to avoid immediate re-broadcast of something else
             self.engine.last_broadcast_act = act
+            self.engine.last_change_time = time.time()
         else:
             messagebox.showerror("Error", f"Failed: {resp}")
 

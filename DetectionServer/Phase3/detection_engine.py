@@ -15,6 +15,8 @@ class DetectionEngine:
         self.history = []
         self.current_act = None
         self.last_broadcast_act = None
+        self.last_change_time = 0
+        self.manual_mode = False
         self.detection_thread = None
         
         # UI callback
@@ -37,8 +39,6 @@ class DetectionEngine:
         rolling_size = self.config.get("rolling_average_size", 5)
         interval = self.config.get("capture_interval", 2) # seconds
         wait_after_change = self.config.get("wait_after_change", 30) # seconds
-        
-        last_change_time = 0
         
         while self.is_running:
             try:
@@ -114,7 +114,7 @@ class DetectionEngine:
 
                 # 4. Logic & Broadcasting
                 # We only broadcast if we are confident (e.g. > 60% agreement)
-                if confidence >= 0.6 and mode != "UNKNOWN":
+                if not self.manual_mode and confidence >= 0.6 and mode != "UNKNOWN":
                     if mode != self.last_broadcast_act:
                         # NEW ACT DETECTED!
                         if self.status_cb:
@@ -123,7 +123,7 @@ class DetectionEngine:
                         success, resp = self.sync_client.set_act(mode)
                         if success:
                             self.last_broadcast_act = mode
-                            last_change_time = time.time()
+                            self.last_change_time = time.time()
                             if self.status_cb:
                                 self.status_cb(f"Broadcasted {mode} to Sync Server.")
                         else:
@@ -136,10 +136,10 @@ class DetectionEngine:
                 
                 # If we just changed, wait longer (e.g. 1 minute) to reduce load
                 # acts are usually ~3 mins, so 1 min is safe.
-                if self.last_broadcast_act and (current_time - last_change_time) < wait_after_change:
+                if self.last_broadcast_act and (current_time - self.last_change_time) < wait_after_change:
                     # We are in the "quiet period" after a change
                     # We can either sleep the whole time or just increase interval
-                    effective_interval = wait_after_change - (current_time - last_change_time)
+                    effective_interval = wait_after_change - (current_time - self.last_change_time)
                     if self.status_cb:
                         self.status_cb(f"In quiet period after act change. Waiting {effective_interval:.0f}s...")
                 
