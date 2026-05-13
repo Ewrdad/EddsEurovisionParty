@@ -29,31 +29,28 @@ export function setupWebSocket(server: http.Server) {
 
   function broadcastState(ws?: ExtendedWebSocket) {
     const actId = currentState.actId || "NONE";
-    const actMessage = JSON.stringify({ type: "ACT_CHANGE", actId });
-    const showMessage = JSON.stringify({ type: "SHOW_CHANGE", showId: currentState.showId });
-    const liveMessage = JSON.stringify({ type: "LIVE_STATUS", isLive: currentState.isLive });
     
-    // Also send a combined state message for more efficient UI updates
+    // Send a unified state message for more efficient UI updates and smoother transitions
     const stateUpdateMessage = JSON.stringify({ 
       type: "STATE_UPDATE", 
-      state: { ...currentState, actId } 
+      state: { 
+        ...currentState, 
+        actId 
+      } 
     });
     
-    const sendAll = (client: ExtendedWebSocket) => {
+    const sendToClient = (client: ExtendedWebSocket) => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(actMessage);
-        client.send(showMessage);
-        client.send(liveMessage);
         client.send(stateUpdateMessage);
       }
     };
 
     if (ws) {
-      sendAll(ws);
+      sendToClient(ws);
       return;
     }
 
-    clients.forEach(sendAll);
+    clients.forEach(sendToClient);
   }
 
   // Heartbeat interval to check for stale connections
