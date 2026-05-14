@@ -41,7 +41,10 @@ class SyncClient:
                 val = kwargs[py_key]
                 # Auto-map country names to IDs if it looks like a country name
                 if api_key == "actId" and isinstance(val, str) and val != "NONE" and val.isupper():
-                    val = val.lower().replace(" ", "-") + "-2026"
+                    if val == "UNITED KINGDOM":
+                        val = "uk-2026"
+                    else:
+                        val = val.lower().replace(" ", "-") + "-2026"
                 payload[api_key] = val
         
         # Direct support for API keys too (with mapping)
@@ -49,7 +52,10 @@ class SyncClient:
             if api_key in kwargs:
                 val = kwargs[api_key]
                 if api_key == "actId" and isinstance(val, str) and val != "NONE" and val.isupper():
-                    val = val.lower().replace(" ", "-") + "-2026"
+                    if val == "UNITED KINGDOM":
+                        val = "uk-2026"
+                    else:
+                        val = val.lower().replace(" ", "-") + "-2026"
                 payload[api_key] = val
 
         if not payload:
