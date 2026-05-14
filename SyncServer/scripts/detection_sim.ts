@@ -14,7 +14,7 @@ async function simulate() {
   // Up-to-date acts from the 2026 event
   const acts = [
     "NONE", 
-    "moldova-2026", 
+    "uk-2026",
     "sweden-2026", 
     "croatia-2026", 
     "greece-2026", 
