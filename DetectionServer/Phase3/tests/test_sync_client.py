@@ -29,9 +29,11 @@ def test_sync_client_send_message(mocker):
 def test_sync_client_health_check(mocker):
     mock_get = mocker.patch("requests.get")
     mock_get.return_value.status_code = 200
-    
+
     client = SyncClient()
-    assert client.check_health() is True
-    
+    is_healthy, msg = client.check_health()
+    assert is_healthy is True
+    assert msg == "OK"    
     mock_get.return_value.status_code = 500
-    assert client.check_health() is False
+    is_healthy, _ = client.check_health()
+    assert is_healthy is False
