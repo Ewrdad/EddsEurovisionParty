@@ -38,12 +38,19 @@ class SyncClient:
         
         for py_key, api_key in mapping.items():
             if py_key in kwargs:
-                payload[api_key] = kwargs[py_key]
+                val = kwargs[py_key]
+                # Auto-map country names to IDs if it looks like a country name
+                if api_key == "actId" and isinstance(val, str) and val != "NONE" and val.isupper():
+                    val = val.lower().replace(" ", "-") + "-2026"
+                payload[api_key] = val
         
-        # Direct support for API keys too
+        # Direct support for API keys too (with mapping)
         for api_key in mapping.values():
             if api_key in kwargs:
-                payload[api_key] = kwargs[api_key]
+                val = kwargs[api_key]
+                if api_key == "actId" and isinstance(val, str) and val != "NONE" and val.isupper():
+                    val = val.lower().replace(" ", "-") + "-2026"
+                payload[api_key] = val
 
         if not payload:
             return False, "Empty payload: No state fields provided"

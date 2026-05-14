@@ -30,7 +30,12 @@ export function setupWebSocket(server: http.Server) {
   function broadcastState(ws?: ExtendedWebSocket) {
     const actId = currentState.actId || "NONE";
     
-    // Send a unified state message for more efficient UI updates and smoother transitions
+    // Individual messages for legacy support and granular updates
+    const actMessage = JSON.stringify({ type: "ACT_CHANGE", actId });
+    const showMessage = JSON.stringify({ type: "SHOW_CHANGE", showId: currentState.showId });
+    const liveMessage = JSON.stringify({ type: "LIVE_STATUS", isLive: currentState.isLive });
+    
+    // Unified state message for more efficient UI updates and smoother transitions
     const stateUpdateMessage = JSON.stringify({ 
       type: "STATE_UPDATE", 
       state: { 
@@ -39,18 +44,21 @@ export function setupWebSocket(server: http.Server) {
       } 
     });
     
-    const sendToClient = (client: ExtendedWebSocket) => {
+    const sendAll = (client: ExtendedWebSocket) => {
       if (client.readyState === WebSocket.OPEN) {
+        client.send(actMessage);
+        client.send(showMessage);
+        client.send(liveMessage);
         client.send(stateUpdateMessage);
       }
     };
 
     if (ws) {
-      sendToClient(ws);
+      sendAll(ws);
       return;
     }
 
-    clients.forEach(sendToClient);
+    clients.forEach(sendAll);
   }
 
   // Heartbeat interval to check for stale connections
@@ -161,6 +169,7 @@ export function setupWebSocket(server: http.Server) {
         text: message.text,
         imageUrl: message.imageUrl,
         message_type: message.type || "info",
+        msg_type: message.type || "info", // Add variants for safety
         duration: message.duration || 5000
       });
       clients.forEach((client) => {

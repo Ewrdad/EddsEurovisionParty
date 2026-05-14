@@ -83,8 +83,8 @@
     "AUSTRIA"
   ],
   "shows": [
-    { "id": "semi-1", "name": "Semi-Final 1" },
-    { "id": "semi-2", "name": "Semi-Final 2" },
+    { "id": "semi-final-1", "name": "Semi-Final 1" },
+    { "id": "semi-final-2", "name": "Semi-Final 2" },
     { "id": "grand-final", "name": "Grand Final" }
   ]
 }
